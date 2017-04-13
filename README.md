@@ -96,6 +96,7 @@ _Note: This will only work if you've created your own bot account._
 - Join the new room manually while logged in as your bot account.
 
 ### Make the bot persistant with a Heroku Server
+- _Note: Depending on the type of server you want to use, this may require a paid account._
 - Make a Heroku account and log in
 - Create a project from the same existing fork
 - In `app.js`, comment out line 7: `require('dotenv').config({path: '.env'});`
