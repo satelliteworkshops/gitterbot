@@ -1,0 +1,6 @@
+"restart": {
+    "include": [
+      "RoomMessages.js"
+    ],
+    "throttle": 100
+}

@@ -67,12 +67,7 @@ Mix and match from the following activities. It doesn't matter if you do none of
   - If we all write a message for the same trigger, and try that trigger in the chat room, every bot will respond. 
   - Change line 23, replacing `USERNAME` with your own username. 
   - Change the response to be whatever you'd like, maybe something like "I heard they're the best tennis player in the country."...or something more true, perhaps. 
-3. **Refresh the server**
-  - This change doesn't automatically restart the server. To do so:
-    - Go back to the `.env` file
-    - Add an empty line break at the end of the file
-  - WHY: This starts the server again, and now your message will be reachable by the bot
- - Test this out in the [shared chat room](https://gitter.im/githubteachergitterbot/Lobby). 
+3. **Test this out in the [shared chat room](https://gitter.im/githubteachergitterbot/Lobby).**
 
 ### Get your own bot instead of our default bot
 - Create a GitHub account for the new bot.
