@@ -8,6 +8,8 @@ In this 40 minute session, you'll fork an existing chatbot and get it up and run
 
 In addition to **a functional chat bot**, you'll walk away with detailed playbooks of **advanced chatops functionality** so you can implement the chat bot in **your own chat environment**.
 
+If you don't get to every activity today in the workshop, that's fine! You will take all of the playbooks home with you.
+
 ![bearbot](http://www.robotshop.com/blog/en/files/teddy-bear-robot-300x180.jpg)
 
 Times:
