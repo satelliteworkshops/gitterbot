@@ -1,5 +1,8 @@
-**This project is a fork from dcscan/gitterbot, with changes made for GitHub Teacher**
+**This project is a fork from dcscan/gitterbot, with changes made for GitHub Teacher**. You can see a more fully implemented bot in [CamperBot, freeCodeCamp's chatbot based on this same code](https://github.com/freecodecamp/camperbot)!
+
 # Build a Bot Workshop
+
+## What to Expect
 
 In this 40 minute session, you'll fork an existing chatbot and get it up and running within minutes. But, this is more than just a glorified demo. 
 
@@ -12,7 +15,9 @@ Times:
 - 10:45-11:45
 - 13:00-14:00
 - 14:15-15:15
+
 Planner: @migarjo & @brianamarie
+
 Facilitator: @mimgarjo & @brianamarie
 
 ## Prerequisites
