@@ -14,13 +14,13 @@
     "passport-oauth2": "~1.1.1",
     "request": "~2.27.0",
     "simple-node-logger": "",
-    "stringy": ""
+    "stringy": "",
+    "chai": "",
+    "chai-as-promised": ""
   },
   "devDependencies": {
     "mocha": "",
-    "nodemon": "~1.0.15",
-    "chai": "",
-    "chai-as-promised": ""
+    "nodemon": "~1.0.15"
   },
   "scripts": {
     "start": "node app.js",
