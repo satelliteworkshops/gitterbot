@@ -10,6 +10,9 @@ var Utils = require('../../lib/utils/Utils');
 var BotCommands = require('../../lib/bot/BotCommands');
 var _ = require('lodash-node');
 
+var date = new Date();
+var dateAsString = date.toString();
+
 
 // TODO - add these to all of the rooms
 // this is easier for people to add content to as they don't have to add to two lists
@@ -26,6 +29,10 @@ var AllRoomMessages = [
     {
         regex: /fruit/gim,
         text: " > My favorites are apples and grapes.",
+    },
+    {
+        regex: /Please +tell +me +the +time/gim,
+        text: dateAsString,
     },
     {
         regex: /movie/gim,
