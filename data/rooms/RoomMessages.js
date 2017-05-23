@@ -25,7 +25,7 @@ var AllRoomMessages = [
     },
     {
         regex: /fruit/gim,
-        text: " > My favorite fruits are apples and grapes.",
+        text: " > My favorites are apples and grapes.",
     },
     {
         regex: /movie/gim,
