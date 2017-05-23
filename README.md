@@ -44,14 +44,14 @@ Tool | Used for
   - **Note: Any changes made in Glitch will not automatically be made in your fork. The steps are similar to importing, but instead select 'Export to GitHub'.**
 3. In Glitch, replace the contents of the `.env` file with:
   ```
-  SERVER_ENV=demobot
-  GITTER_USER_TOKEN=92123753cc1ec6e60bd0ca3e7b87b35bc38ca4d3
-  FCC_API_KEY=TESTAPIKEY
-  GITTER_APP_KEY=63ece8ac0eeed9b17b1cc9867f65d4857ec6e5fc
-  GITTER_APP_SECRET=9026e3b3a74357035ee15a9591f31b2de5cfd3a6
-  GITTER_APP_REDIRECT_URL=http://localhost:7891/login/callback
-  LOG_LEVEL=10
-  PORT=7891
+    SERVER_ENV=demobot
+    GITTER_USER_TOKEN=338ca32655549d35115cd82281b522cf57634b26
+    FCC_API_KEY=TESTAPIKEY
+    GITTER_APP_KEY=63ece8ac0eeed9b17b1cc9867f65d4857ec6e5fc
+    GITTER_APP_SECRET=9026e3b3a74357035ee15a9591f31b2de5cfd3a6
+    GITTER_APP_REDIRECT_URL=http://localhost:7891/login/callback
+    LOG_LEVEL=10
+    PORT=7891
   ```
 4. Join [the shared gitter chat room](https://gitter.im/githubteachergitterbot/Lobby). (You will need a Gitter account, which you can create with your GitHub account). You can test this by saying something that the bot is already looking for, like "satellite". 
 
