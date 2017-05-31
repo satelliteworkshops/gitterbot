@@ -4,7 +4,7 @@
 
 ## What to Expect
 
-In this 40 minute session, you'll fork an existing chatbot and get it up and running within minutes. But, this is more than just a glorified demo. 
+In this 40 minute session, you'll fork an existing chatbot and get it up and running within minutes. But, this is more than just a glorified demo.
 
 In addition to **a functional chat bot**, you'll walk away with detailed playbooks of **advanced chatops functionality** so you can implement the chat bot in **your own chat environment**.
 
@@ -31,7 +31,7 @@ Tool | Used for
 [GitHub](https://github.com) (Please log in now) | To grab the code
 [Glitch](https://glitch.com) (Please login with GitHub now) | A temporary server for your chat bot
 [Gitter room](https://gitter.im/githubteachergitterbot/Lobby) (Please join room now, authenticate with GitHub) | To interact with your chatbot
-[One shared bot user account](https://github.com/billyyumyum2x2) | The account logged in to Gitter, authenticated via Glitch app, responding to messages :robot: 
+[One shared bot user account](https://github.com/billyyumyum2x2) | The account logged in to Gitter, authenticated via Glitch app, responding to messages :robot:
 
 ## Part 1: Steps for Getting Started
 1. Fork the [satelliteworkshops/gitterbot repository](https://github.com/satelliteworkshops/gitterbot)
@@ -53,16 +53,16 @@ Tool | Used for
   LOG_LEVEL=10
   PORT=7891
   ```
-4. Join [the shared gitter chat room](https://gitter.im/githubteachergitterbot/Lobby). (You will need a Gitter account, which you can create with your GitHub account). You can test this by saying something that the bot is already looking for, like "satellite". 
+4. Join [the shared gitter chat room](https://gitter.im/githubteachergitterbot/Lobby). (You will need a Gitter account, which you can create with your GitHub account). You can test this by saying something that the bot is already looking for, like "satellite".
 
 ## Part 2: Pick Your Own Adventure
-Mix and match from the following activities. It doesn't matter if you do none of them or all of them, or what order you do them in. Each activity is independant of the others and is a way to fill out functionality of the bot for your specific use. If you don't have time to get to everything today, don't worry! You still have all of the instructions on your fork. 
+Mix and match from the following activities. It doesn't matter if you do none of them or all of them, or what order you do them in. Each activity is independant of the others and is a way to fill out functionality of the bot for your specific use. If you don't have time to get to everything today, don't worry! You still have all of the instructions on your fork.
 
 ### Add new bot messages
 - **PROTIP/Disclaimer:** _**Do not include the phrase that triggers a message in the response message.** You will find unfortunate behaviors, which may include some accidental looping that may get the bot account banned. I may or may not know from experience._
 1. **Find the existing message code**
   - The basic room messages are stored in `data/rooms/RoomMessages.js`.
-  - So far, our bot is best at watching for incoming chat messages, and uses regex to know when to respond. 
+  - So far, our bot is best at watching for incoming chat messages, and uses regex to know when to respond.
   - Test out the current messages (and your regex knowledge) to see what our Bot can say:
     - `/satellite/gim`
     - `/githubteacher/gim`
@@ -71,18 +71,18 @@ Mix and match from the following activities. It doesn't matter if you do none of
     - `/allyourbase/`
   - It's easy to add simple, static messages here. This is the point of contact for more interactive messages, too.
 2. **Add a new message and trigger that will be unique to your bot.**
-  - If we all write a message for the same trigger, and try that trigger in the chat room, every bot will respond. 
-  - Change line 23, replacing `USERNAME` with your own username. 
-  - Change the response to be whatever you'd like, maybe something like "I heard they're the best tennis player in the country."...or something more true, perhaps. 
+  - If we all write a message for the same trigger, and try that trigger in the chat room, every bot will respond.
+  - Change line 23, replacing `USERNAME` with your own username.
+  - Change the response to be whatever you'd like, maybe something like "I heard they're the best tennis player in the country."...or something more true, perhaps.
 3. **Test this out in the [shared chat room](https://gitter.im/githubteachergitterbot/Lobby).**
 
 ### Get your own bot instead of our default bot
 - Create a GitHub account for the new bot.
 - Sign that account into Gitter and join whichever chat rooms you'd like it to be active in.
-- Go to `https://developer.gitter.im/docs/welcome` and click "Sign in". You'll be given a new API token. 
-- Replace the GITTER_USER_TOKEN of the `.env` file with this new token. 
+- Go to `https://developer.gitter.im/docs/welcome` and click "Sign in". You'll be given a new API token.
+- Replace the GITTER_USER_TOKEN of the `.env` file with this new token.
 
-### Change the chatroom for the bot 
+### Change the chatroom for the bot
 _Note: This will only work if you've created your own bot account._
 - Change code in `data/RoomData.js`
 - The code that tells the bot to join [our chat room](https://gitter.im/githubteachergitterbot/Lobby?source=orgpage) is on line 39.
@@ -94,7 +94,7 @@ _Note: This will only work if you've created your own bot account._
         topics: ["getting started"]
     }],
 ```
-- Change the code there, or add your code to the block in lines 24-32. 
+- Change the code there, or add your code to the block in lines 24-32.
 - Join the new room manually while logged in as your bot account.
 
 ### Make the bot persistant with a Heroku Server
@@ -103,31 +103,30 @@ _Note: This will only work if you've created your own bot account._
 - Create a project from the same existing fork
 - In `app.js`, comment out line 7: `require('dotenv').config({path: '.env'});`
 - In Heroku under settings, choose a buildpack of `heroku/nodejs`
-- Also in settings, add config variables to equal those that were in your `.env` file on GoMix. 
+- Also in settings, add config variables to equal those that were in your `.env` file on GoMix.
 - Deploy the app.
 
 ### Make the bot run in Docker
 - Make sure to install [Docker](https://docker.com)
-- Build your Docker image using the command `docker build -t gitter .`
-- This takes the [Dockerfile](Dockerfile) and configures the node app to run
-  inside.
+- In your text editor, duplicate the file named `dot-EXAMPLE.env` with the new name `dot.env`.
+- Build your Docker image using the command `docker build -t gitter .` This takes the [Dockerfile](Dockerfile) and configures the node app to run inside.
 - You can now see your image using the command `docker images`.
-- Your bot can be run with the command `docker run --rm -it gitter` 
+- Your bot can be run with the command `docker run --rm -it gitter`
 - If you want to distribute your bot run it using `docker run -d --rm gitter`,
   as this will run your bot as a service.
 - You have now containerized your chatbot!
 
 
- 
+
 ### Connect the bot to a repository's GitHub wiki
 - This is done using submodules and scripts. The submodules are **not** included in this repository, but the scripts and directions are.
-- The Bot functionality for calling wiki pages in this format already built in 
+- The Bot functionality for calling wiki pages in this format already built in
 - To connect your own wiki, add the repository with said wiki as a submodule of this repository.
-- Use the script in `bin/wiki-update.sh` to update the file structure of this repository. This script will require updating based on your submodule's name and placement within your local repository. 
+- Use the script in `bin/wiki-update.sh` to update the file structure of this repository. This script will require updating based on your submodule's name and placement within your local repository.
 - Files will be added to  match a structure like `data/wiki/ARTICLE.md`, and the bot already knows to search those files with the `wiki` message.
 
 
-### :construction: WIP :construction: Give the bot some persistent data, like `.rem things` 
+### :construction: WIP :construction: Give the bot some persistent data, like `.rem things`
 ? Maybe adapter that would interact with database, and have existing database set up for this example, with instructions on how to change the database and interactions
 
 ### :construction: WIP :construction: API adapter
@@ -136,8 +135,8 @@ _Note: This will only work if you've created your own bot account._
 ### :construction: WIP :construction: Longer strings of conversation, remembering past user things
 ?
 
-### :construction: WIP :construction: Have the bot work in Slack instead of Gitter (Or...dream big...why not also integrate to Facebook or any other messaging platform?) 
-? Have functionality for both, put the functional chat code in a place that could be accessed by the slack or gitter code 
+### :construction: WIP :construction: Have the bot work in Slack instead of Gitter (Or...dream big...why not also integrate to Facebook or any other messaging platform?)
+? Have functionality for both, put the functional chat code in a place that could be accessed by the slack or gitter code
 
 ## Part 3: Dream Big for Your Bot
 Chatbot functionality is limited only by imagination. What are some dreams for chatbots? What are some cool functionalities we could show or feature without delving into 'how'? You can sort your dreams for your bot into 3 general tiers. Here are some of our ideas:
@@ -153,7 +152,7 @@ Chatbot functionality is limited only by imagination. What are some dreams for c
 - .gif display, like `/giphy chatbot`
 
 #### Tier 3: User orders bot to do something, bot actually makes a change to something
-- Onboarding 
+- Onboarding
 - Deploy
 - Social conventions, like thanking others by giving them sparkles
 - Scheduling bot
