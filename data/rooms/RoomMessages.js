@@ -10,15 +10,13 @@ var Utils = require('../../lib/utils/Utils');
 var BotCommands = require('../../lib/bot/BotCommands');
 var _ = require('lodash-node');
 
-
 // TODO - add these to all of the rooms
 // this is easier for people to add content to as they don't have to add to two lists
-var AllRoomMessages = [
-    {
+var AllRoomMessages = [{
         regex: /satellite/gim,
         text: " > GitHub is great, and Training Day is greater!!",
     },
-  
+
     {
         regex: /USERNAME/gim,
         text: " > That person is awesome",
@@ -56,14 +54,48 @@ var AllRoomMessages = [
     {
         regex: /\bth?a?n?[xk]s?q?\b/gim,
         func: BotCommands.thanks
-    }
+    },
+    {
+        regex: /\/giphy/gim,
+        func: (input) => {
+            return new Promise((resolve, reject) => {
+                // Take the actual query for Giphy
+                const text = input.message.model.text;
+                const originalQuery = text.split(/\/giphy /gim)[
+                    1];
+                const query = originalQuery.replace(' ', '+');
+
+                request({
+                    // This is a demo Giphy api key, it's not supposed to be used outside of demos or development
+                    uri: 'http://api.giphy.com/v1/gifs/search?q=' +
+                        query +
+                        '&api_key=dc6zaTOxFJmzC',
+                    method: 'GET'
+                }, (err, response, body) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    else {
+                        const jsonBody = typeof body ===
+                            'string' ? JSON.parse(body) :
+                            body;
+                        // Make sure only to resolve (and respond to the chat) with the image received from Giphy.
+                        resolve('![' + originalQuery +
+                            '](' + jsonBody.data[0]
+                            .images.fixed_height.url +
+                            ')');
+                    }
+                });
+            })
+        }
+    },
 ];
 
 var RoomMessages = {
 
-    scanInput: function(input, roomName, chance) {
+    scanInput: function (input, roomName, chance) {
         if (Math.random() > chance) {
-            return null;   // dont always reply
+            return null; // dont always reply
         }
         var oneMessage;
         var chat = input.message.model.text.toLowerCase();
@@ -71,23 +103,28 @@ var RoomMessages = {
         roomName = roomName.toLowerCase();
 
         // some messages are only for certain rooms so exclude them here
-        var thisRoomMessages = AllRoomMessages.filter(function(msg) {
+        var thisRoomMessages = AllRoomMessages.filter(function (msg) {
             if (msg.not) {
                 return (msg.not != roomName);
-            } else {
+            }
+            else {
                 return true;
             }
         });
-        if (!thisRoomMessages) { return false; }
+        if (!thisRoomMessages) {
+            return false;
+        }
 
-        var msgList = thisRoomMessages.filter(function(item) {
-            if(!item) { return null; }
-
-            if (item.regex) {
-              var flag = item.regex.test(chat);
+        var msgList = thisRoomMessages.filter(function (item) {
+            if (!item) {
+                return null;
             }
 
-            if(flag) {
+            if (item.regex) {
+                var flag = item.regex.test(chat);
+            }
+
+            if (flag) {
                 //Utils.clog(chat, item.word, "flag:" + flag);
             }
             return flag;
@@ -96,13 +133,14 @@ var RoomMessages = {
         // now check if chance is high enough
         if (msgList.length > 0) {
 
-            oneMessage = _.sample(msgList);  // if we have multiple messages, make sure to choose just one
+            oneMessage = _.sample(msgList); // if we have multiple messages, make sure to choose just one
             chance = oneMessage.chance || 1; // check if the chance is high enough so we can have % of time messages
             if (Math.random() < (chance)) {
                 // we have a winner!
                 return oneMessage;
             }
-        } else {
+        }
+        else {
             return null;
         }
 
