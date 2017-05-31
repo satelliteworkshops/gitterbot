@@ -97,6 +97,22 @@ _Note: This will only work if you've created your own bot account._
 - Change the code there, or add your code to the block in lines 24-32.
 - Join the new room manually while logged in as your bot account.
 
+### Use JavaScript in more advanced messages
+- This bot is written in JavaScript. Use JavaScript to add a more advanced functionality, like telling the date or the time.
+- In `data/rooms/RoomMessages.js`, add some javascript to grab the date and time and assign it to a variable as a string. You'll want to add this code before the text calls are made, around like 13.
+    ```
+    var date = new Date();
+    var dateAsString = date.toString();
+    ```
+- Later in the code, access it as a message response.
+    ```
+    {
+        regex: /Please +tell +me +the +time/gim,
+        text: dateAsString,
+    },
+    ```
+- This concept will work for anything in JavaScript. Check out [JavaScript methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Methods_Index) to see what else is possible!     
+
 ### Make the bot persistant with a Heroku Server
 - _Note: Depending on the type of server you want to use, this may require a paid account._
 - Make a Heroku account and log in
@@ -115,7 +131,6 @@ _Note: This will only work if you've created your own bot account._
 - If you want to distribute your bot run it using `docker run -d --rm gitter`,
   as this will run your bot as a service.
 - You have now containerized your chatbot!
-
 
 
 ### Connect the bot to a repository's GitHub wiki
