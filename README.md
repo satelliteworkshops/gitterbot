@@ -106,6 +106,19 @@ _Note: This will only work if you've created your own bot account._
 - Also in settings, add config variables to equal those that were in your `.env` file on GoMix. 
 - Deploy the app.
 
+### Make the bot run in Docker
+- Make sure to install [Docker](https://docker.com)
+- Build your Docker image using the command `docker build -t gitter .`
+- This takes the [Dockerfile](Dockerfile) and configures the node app to run
+  inside.
+- You can now see your image using the command `docker images`.
+- Your bot can be run with the command `docker run --rm -it gitter` 
+- If you want to distribute your bot run it using `docker run -d --rm gitter`,
+  as this will run your bot as a service.
+- You have now containerized your chatbot!
+
+
+ 
 ### Connect the bot to a repository's GitHub wiki
 - This is done using submodules and scripts. The submodules are **not** included in this repository, but the scripts and directions are.
 - The Bot functionality for calling wiki pages in this format already built in 
@@ -137,7 +150,7 @@ Chatbot functionality is limited only by imagination. What are some dreams for c
 #### Tier 2: User inputs something, bot searches static information to give specific information
 - Get the weather at a designated location
 - Get the location of a specific user
-- .gif display, llike `/giphy chatbot`
+- .gif display, like `/giphy chatbot`
 
 #### Tier 3: User orders bot to do something, bot actually makes a change to something
 - Onboarding 
