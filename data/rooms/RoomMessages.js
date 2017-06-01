@@ -56,40 +56,7 @@ var AllRoomMessages = [{
         regex: /\bth?a?n?[xk]s?q?\b/gim,
         func: BotCommands.thanks
     },
-    {
-        regex: /\/giphy/gim,
-        func: (input) => {
-            return new Promise((resolve, reject) => {
-                // Take the actual query for Giphy
-                const text = input.message.model.text;
-                const originalQuery = text.split(/\/giphy /gim)[
-                    1];
-                const query = originalQuery.replace(' ', '+');
-
-                request({
-                    // This is a demo Giphy api key, it's not supposed to be used outside of demos or development
-                    uri: 'http://api.giphy.com/v1/gifs/search?q=' +
-                        query +
-                        '&api_key=dc6zaTOxFJmzC',
-                    method: 'GET'
-                }, (err, response, body) => {
-                    if (err) {
-                        reject(err);
-                    }
-                    else {
-                        const jsonBody = typeof body ===
-                            'string' ? JSON.parse(body) :
-                            body;
-                        // Make sure only to resolve (and respond to the chat) with the image received from Giphy.
-                        resolve('![' + originalQuery +
-                            '](' + jsonBody.data[0]
-                            .images.fixed_height.url +
-                            ')');
-                    }
-                });
-            })
-        }
-    },
+  },
 ];
 
 var RoomMessages = {
