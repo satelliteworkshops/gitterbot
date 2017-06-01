@@ -89,6 +89,7 @@ var RoomMessages = {
             }
 
             if (item.regex) {
+                item.regex.lastIndex = 0;
                 var flag = item.regex.test(chat);
             }
 
