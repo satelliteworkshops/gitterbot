@@ -97,6 +97,35 @@ _Note: This will only work if you've created your own bot account._
 - Change the code there, or add your code to the block in lines 24-32.
 - Join the new room manually while logged in as your bot account.
 
+### Have the Bot interact with an API
+- This code supports Javascript Promises
+- To test this out, here's some code you can start with. It uses [the free OpenWeather API](https://openweathermap.org/current).
+```
+{
+  regex: /\/weather/gim,
+  func: (input) => {
+    return new Promise((resolve, reject) => {
+          request({
+            uri: 'http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=bd5e378503939ddaee76f12ad7a97608',
+            method: 'GET'
+          }, (err, response, body) => {
+            if(err) { reject(err); }
+            else {
+              const jsonBody = JSON.parse(body);
+              resolve(jsonBody.weather[0].description);
+            }
+          });
+        });
+  }
+
+```
+- You can see that the functionality is low level. Make this more fun by changing `London,uk` or by changing which output is shown from the API response. Remember, JavaScript is supported, and you can get messages from the chat users. :wink:
+- Want to do more? Like add giphy support, or other APIs? Start by asking yourself (and google, if necessary) these questions:
+  - What's the API I want to use, and how do I call it?
+  - How can I use more advanced work with regexes, like groups, or string manipulation? How would I _want_ to?
+  - Am I taking the correct properties from the API response?
+  - If I am returning anything other than text, how can I format it in in gitter using markdown?
+
 ### Make the bot persistant with a Heroku Server
 - _Note: Depending on the type of server you want to use, this may require a paid account._
 - Make a Heroku account and log in
@@ -115,8 +144,6 @@ _Note: This will only work if you've created your own bot account._
 - If you want to distribute your bot run it using `docker run -d --rm gitter`,
   as this will run your bot as a service.
 - You have now containerized your chatbot!
-
-
 
 ### Connect the bot to a repository's GitHub wiki
 - This is done using submodules and scripts. The submodules are **not** included in this repository, but the scripts and directions are.
