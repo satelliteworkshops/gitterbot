@@ -97,6 +97,22 @@ _Note: This will only work if you've created your own bot account._
 - Change the code there, or add your code to the block in lines 24-32.
 - Join the new room manually while logged in as your bot account.
 
+### Use JavaScript in more advanced messages
+- This bot is written in JavaScript. Use JavaScript to add a more advanced functionality, like telling the date or the time.
+- In `data/rooms/RoomMessages.js`, add some javascript to grab the date and time and assign it to a variable as a string. You'll want to add this code before the text calls are made, around like 13.
+    ```
+    var date = new Date();
+    var dateAsString = date.toString();
+    ```
+- Later in the code, access it as a message response.
+    ```
+    {
+        regex: /Please +tell +me +the +time/gim,
+        text: dateAsString,
+    },
+    ```
+- This concept will work for anything in JavaScript. Check out [JavaScript methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Methods_Index) to see what else is possible!     
+
 ### Have the Bot interact with an API
 - This code supports Javascript Promises
 - To test this out, here's some code you can start with. It uses [the free OpenWeather API](https://openweathermap.org/current).
@@ -125,7 +141,7 @@ _Note: This will only work if you've created your own bot account._
   - What's the API I want to use, and how do I call it?
   - How can I use more advanced work with regexes, like groups, or string manipulation? How would I _want_ to?
   - Am I taking the correct properties from the API response?
-  - If I am returning anything other than text, how can I format it in in gitter using markdown?
+  - If I am returning anything other than text, how can I format it in in gitter using markdown
 
 ### Make the bot persistant with a Heroku Server
 - _Note: Depending on the type of server you want to use, this may require a paid account._
@@ -156,9 +172,6 @@ _Note: This will only work if you've created your own bot account._
 
 ### :construction: WIP :construction: Give the bot some persistent data, like `.rem things`
 ? Maybe adapter that would interact with database, and have existing database set up for this example, with instructions on how to change the database and interactions
-
-### :construction: WIP :construction: API adapter
-? Adapter that would abstract away steps of API, user would just pick API and what strings to search for it
 
 ### :construction: WIP :construction: Longer strings of conversation, remembering past user things
 ?
