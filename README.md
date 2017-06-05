@@ -86,7 +86,7 @@ Mix and match from the following activities. It doesn't matter if you do none of
 _Note: This will only work if you've created your own bot account._
 - Change code in `data/RoomData.js`
 - The code that tells the bot to join [our chat room](https://gitter.im/githubteachergitterbot/Lobby?source=orgpage) is on line 39.
-```
+```js
     demobot: [{
         title: "githubteacher's GitterBot room",
         name: "githubteachergitterbot/lobby",
@@ -100,12 +100,12 @@ _Note: This will only work if you've created your own bot account._
 ### Use JavaScript in more advanced messages
 - This bot is written in JavaScript. Use JavaScript to add a more advanced functionality, like telling the date or the time.
 - In `data/rooms/RoomMessages.js`, add some javascript to grab the date and time and assign it to a variable as a string. You'll want to add this code before the text calls are made, around like 13.
-    ```
+    ```js
     var date = new Date();
     var dateAsString = date.toString();
     ```
 - Later in the code, access it as a message response.
-    ```
+    ```js
     {
         regex: /Please +tell +me +the +time/gim,
         text: dateAsString,
@@ -116,7 +116,7 @@ _Note: This will only work if you've created your own bot account._
 ### Have the Bot interact with an API
 - This code supports Javascript Promises
 - To test this out, here's some code you can start with. It uses [the free OpenWeather API](https://openweathermap.org/current).
-```
+```js
 {
   regex: /\/weather/gim,
   func: (input) => {
