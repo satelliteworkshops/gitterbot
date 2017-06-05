@@ -122,7 +122,7 @@ _Note: This will only work if you've created your own bot account._
   func: (input) => {
     return new Promise((resolve, reject) => {
           request({
-            // note: this API key is public and free. Too many calls will get it blocked.
+            // note: this API key is public. Too many calls will get it blocked.
             uri: 'http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=bd5e378503939ddaee76f12ad7a97608',
             method: 'GET'
           }, (err, response, body) => {
