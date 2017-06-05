@@ -136,7 +136,7 @@ _Note: This will only work if you've created your own bot account._
   }
 
 ```
-- You can see that the functionality is low level. Make this more fun by changing `London,uk` or by changing which output is shown from the API response. Remember, JavaScript is supported, and you can get messages from the chat users. :wink:
+- This functionality is a basic API call, making a request and getting a response. Make this more fun by changing `London,uk` or by changing which output is shown from the API response. Remember, since the bot is written in JavaScript is supported, and you can get messages from the chat users. :wink:
 - Want to do more? Like add giphy support, or other APIs? Start by asking yourself (and google, if necessary) these questions:
   - What's the API I want to use, and how do I call it?
   - How can I use more advanced work with regexes, like groups, or string manipulation? How would I _want_ to?
