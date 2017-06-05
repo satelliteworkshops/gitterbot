@@ -139,9 +139,9 @@ _Note: This will only work if you've created your own bot account._
 - This functionality is a basic API call, making a request and getting a response. Make this more fun by changing `London,uk` or by changing which output is shown from the API response. Remember, since the bot is written in JavaScript is supported, and you can get messages from the chat users. :wink:
 - Want to do more? Like add giphy support, or other APIs? Start by asking yourself (and google, if necessary) these questions:
   - What's the API I want to use, and how do I call it?
-  - How can I use regex to parse the message a user sent as data and respond differently to each message? Something like "/calculate 2+2" and the bot would answer "4". 
+  - How can I use regex to parse the message a user sent as data and respond differently to each message? Something like "/calculate 2+2" and the bot would answer "4".
   - Am I taking the correct properties from the API response?
-  - If I am returning anything other than text, how can I format it in in gitter using markdown
+  - If I am returning anything other than text, how can I format it in in gitter using markdown?
 
 ### Make the bot persistant with a Heroku Server
 - _Note: Depending on the type of server you want to use, this may require a paid account._
