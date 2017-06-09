@@ -86,7 +86,7 @@ Mix and match from the following activities. It doesn't matter if you do none of
 _Note: This will only work if you've created your own bot account._
 - Change code in `data/RoomData.js`
 - The code that tells the bot to join [our chat room](https://gitter.im/githubteachergitterbot/Lobby?source=orgpage) is on line 39.
-```
+```js
     demobot: [{
         title: "githubteacher's GitterBot room",
         name: "githubteachergitterbot/lobby",
@@ -100,18 +100,48 @@ _Note: This will only work if you've created your own bot account._
 ### Use JavaScript in more advanced messages
 - This bot is written in JavaScript. Use JavaScript to add a more advanced functionality, like telling the date or the time.
 - In `data/rooms/RoomMessages.js`, add some javascript to grab the date and time and assign it to a variable as a string. You'll want to add this code before the text calls are made, around like 13.
-    ```
+    ```js
     var date = new Date();
     var dateAsString = date.toString();
     ```
 - Later in the code, access it as a message response.
-    ```
+    ```js
     {
         regex: /Please +tell +me +the +time/gim,
         text: dateAsString,
     },
     ```
 - This concept will work for anything in JavaScript. Check out [JavaScript methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Methods_Index) to see what else is possible!     
+
+### Have the Bot interact with an API
+- This code supports Javascript Promises
+- To test this out, here's some code you can start with. It uses [the free OpenWeather API](https://openweathermap.org/current).
+```js
+{
+  regex: /\/weather/gim,
+  func: (input) => {
+    return new Promise((resolve, reject) => {
+          request({
+            // note: this API key is public. Too many calls will get it blocked.
+            uri: 'http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=bd5e378503939ddaee76f12ad7a97608',
+            method: 'GET'
+          }, (err, response, body) => {
+            if(err) { reject(err); }
+            else {
+              const jsonBody = JSON.parse(body);
+              resolve(jsonBody.weather[0].description);
+            }
+          });
+        });
+  }
+
+```
+- This functionality is a basic API call, making a request and getting a response. Make this more fun by changing `London,uk` or by changing which output is shown from the API response. Remember, since the bot is written in JavaScript is supported, and you can get messages from the chat users. :wink:
+- Want to do more? Like add giphy support, or other APIs? Start by asking yourself (and google, if necessary) these questions:
+  - What's the API I want to use, and how do I call it?
+  - How can I use regex to parse the message a user sent as data and respond differently to each message? Something like "/calculate 2+2" and the bot would answer "4".
+  - Am I taking the correct properties from the API response?
+  - If I am returning anything other than text, how can I format it in in gitter using markdown?
 
 ### Make the bot persistant with a Heroku Server
 - _Note: Depending on the type of server you want to use, this may require a paid account._
@@ -132,7 +162,6 @@ _Note: This will only work if you've created your own bot account._
   as this will run your bot as a service.
 - You have now containerized your chatbot!
 
-
 ### Connect the bot to a repository's GitHub wiki
 - This is done using submodules and scripts. The submodules are **not** included in this repository, but the scripts and directions are.
 - The Bot functionality for calling wiki pages in this format already built in
@@ -143,9 +172,6 @@ _Note: This will only work if you've created your own bot account._
 
 ### :construction: WIP :construction: Give the bot some persistent data, like `.rem things`
 ? Maybe adapter that would interact with database, and have existing database set up for this example, with instructions on how to change the database and interactions
-
-### :construction: WIP :construction: API adapter
-? Adapter that would abstract away steps of API, user would just pick API and what strings to search for it
 
 ### :construction: WIP :construction: Longer strings of conversation, remembering past user things
 ?
